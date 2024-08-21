@@ -1,17 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { AppRegistry } from 'react-native';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { render } from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Define el nombre de la aplicación directamente aquí
+const appName = 'CiudadanApp';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const rootTag = document.getElementById('root');
+
+if (rootTag) {
+  AppRegistry.registerComponent(appName, () => App);
+  AppRegistry.runApplication(appName, {
+    initialProps: {},
+    rootTag: rootTag,
+  });
+} else {
+  render(<App />, rootTag);
+}
